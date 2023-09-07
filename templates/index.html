@@ -1,0 +1,322 @@
+<html>
+	<head>
+	<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<!-- Java Script -->	
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+		<title>Can Go</title>
+	</head>
+
+	<body style="background-color: blue;">
+		
+		<!-- Navbar
+		<nav class="navbar" style="background-color: aquamarine;">
+			<span class="navbar-brand mb-0 h1">Cancer Risk Test</span>
+		</nav>-->
+		<!--Prediction Result-->
+		<div id ="result" style="padding: 0% 0% 0% 25%; text-align: center;">
+			<div style="width: 650px; padding: 20px; border: 2px solid #ccc; background-color: #f5f5f5; border-radius: 5px; font-size: 16px; color: #333; font-style: bold; align-items: center;">
+				{{result}}
+			</div>
+		</div>
+		<div class="container">
+			<br>
+			<!--Form-->
+			<form action = "{{url_for('predict')}}" method ="POST" style="background-color: aquamarine;">
+				<fieldset  style="text-align: center;">
+				<legend><b>	Self Cancer Risk Evaluator</b>
+				<p style="font-size: 20px; font-style: italic;">
+					All fields are mandatory
+				</p></legend><br>
+				  <div class="card card-body" style="background-color: aquamarine;">
+					  <div class="form-group  row">
+						<div class="col-sm-3">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="patient" name="patient" required>
+						</div>
+						<div class="col-sm-3">
+							<label for="Phone_Number">Phone Number</label>
+							<input type="tel" pattern="[0-9]{10}" class="form-control" id="phone" name="phone" required>
+						</div>
+						<div class="col-sm-3">
+							<label for="Age">Age</label>
+							<input type="number" class="form-control" id="Age" name="Age" required>
+						</div>
+						<div class="col-sm-3">
+							<label for="Gender">Gender</label>
+							<select class="form-control" id="Gender"  name="Gender" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">Male</option>
+							  <option value = "2">Female</option>
+							</select>
+					   </div>
+						 
+					  </div>
+					  <br>
+                      <div class="form-group  row">
+					  
+						  <div class="col-sm">
+							<label for="Air Pollution">Air pollution</label>
+							<select class="form-control" id="Air Pollution" name = "Air Pollution" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">very low</option>
+							  <option value = "2">low</option>
+							  <option value = "4">medium</option>
+							  <option value = "7">high</option>
+							  <option value = "8">very high</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Alcohol use">Alcohol use</label>
+							<select class="form-control" id="Alcohol use" name = "Alcohol use" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">non-drinker</option>
+							  <option value = "2">light drinker</option>
+                              <option value = "5">moderate drinker</option>
+							  <option value = "7">heavy drinker</option>
+							  <option value = "8">very heavy drinker</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Dust Allergy">Dust allergy in your area</label>
+							<select class="form-control" id="Dust Allergy" name = "Dust Allergy" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">very low</option>
+							  <option value = "2">low</option>
+							  <option value = "4">medium</option>
+							  <option value = "7">high</option>
+							</select>
+						  </div>
+                      </div>
+                          <br>
+                          <div class="form-group  row">
+                          <div class="col-sm">
+							<label for="OccuPational Hazards">Occupational Hazards</label>
+							<select class="form-control" id="OccuPational Hazards" name = "OccuPational Hazards" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">very low</option>
+							  <option value = "2">low</option>
+							  <option value = "4">medium</option>
+							  <option value = "6">high</option>
+							  <option value = "7">very high</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Genetic Risk">Genetic risk</label>
+							<select class="form-control" id="Genetic Risk" name = "Genetic Risk" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">very low</option>
+							  <option value = "2">low</option>
+							  <option value = "4">medium</option>
+							  <option value = "6">high</option>
+							  <option value = "7">very high</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="chronic Lung Disease">chronic lung Disease</label>
+							<select class="form-control" id="chronic Lung Disease" name = "chronic Lung Disease" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">very low</option>
+							  <option value = "2">low</option>
+							  <option value = "4">medium</option>
+							  <option value = "6">high</option>
+							  <option value = "7">very high</option>
+							  
+							</select>
+						  </div>
+                  </div>
+                  
+                          <br>
+                          <div class="form-group  row">
+                          <div class="col-sm">
+							<label for="Balanced Diet">Balanced diet</label>
+							<select class="form-control" id="Balanced Diet" name = "Balanced Diet" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">1</option>
+							  <option value = "2">2</option>
+							  <option value = "3">3</option>
+							  <option value = "4">4</option>
+                              <option value = "5">5</option>
+							  <option value = "6">6</option>
+							  <option value = "7">7</option>
+							  <option value = "8">8</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Obesity">Obesity (BMI = kg/m2)</label>
+							<select class="form-control" id="Obesity" name = "Obesity" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">BMI<24-Low obesity</option>
+							  <option value = "4">BMI=24-Moderate obesity</option>
+							  <option value = "7">BMI>=25-High obesity</option>
+							 
+							</select>
+						  </div>
+                        </div>
+
+                          <br>
+                          <div class="form-group  row">
+                          <div class="col-sm">
+							<label for="Smoking">Smoking</label>
+							<select class="form-control" id="Smoking" name = "Smoking" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">non-smoker</option>
+							  <option value = "2">light smoker</option>
+                              <option value = "5">Intermittent Smokers</option>
+							  <option value = "7">active smoker</option>
+							  <option value = "8">very active smoker</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Passive Smoker">Passive Smoker</label>
+							<select class="form-control" id="Passive Smoker" name = "Passive Smoker" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">no</option>
+							  <option value = "4">Intermittent</option>
+							  <option value = "8">yes</option>
+							</select>
+						  </div>
+                          </div>
+
+                          <br>
+                          <div class="form-group  row">
+                          <div class="col-sm">
+							<label for="Chest pain">Chest pain</label>
+							<select class="form-control" id="Chest Pain" name = "Chest Pain" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">no chest pain</option>
+							  <option value = "3">light chest pain</option>
+                              <option value = "5">intermittent chest pain</option>
+							  <option value = "8">high chest pain</option>
+                              <option value = "9">very high chest pain</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Coughing of Blood">Coughing of Blood</label>
+							<select class="form-control" id="Coughing of Blood" name = "Coughing of Blood" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">no coughing of blood</option>
+							  <option value = "3">low coughing of blood</option>
+							  <option value = "7">medium coughing of blood</option>
+                              <option value = "9">high coughing of blood</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Fatigue">Fatigue</label>
+							<select class="form-control" id="Fatigue" name = "Fatigue" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">low fatigue</option>
+							  <option value = "6">medium fatigue</option>
+                              <option value = "9">high fatigue</option>
+							</select>
+						  </div>
+                          </div>
+                          <br>
+                          <div class="form-group  row">
+                          <div class="col-sm">
+							<label for="Weight Loss">Weight Loss *</label>
+							<select class="form-control" id="Weight Loss" name = "Weight Loss" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">1</option>
+							  <option value = "2">2</option>
+							  <option value = "3">3</option>
+							  <option value = "4">4</option>
+                              <option value = "5">5</option>
+							  <option value = "6">6</option>
+							  <option value = "7">7</option>
+							  <option value = "8">8</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Shortness of Breath">Shortness of Breath</label>
+							<select class="form-control" id="Shortness of Breath" name = "Shortness of Breath" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">low Shortness of Breath</option>
+							  <option value = "7">medium Shortness of Breath</option>
+                              <option value = "9">high Shortness of Breath</option>
+							</select>
+						  </div>
+                          
+                          <div class="col-sm">
+							<label for="Wheezing">Wheezing</label>
+							<select class="form-control" id="Wheezing" name = "Wheezing" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">no wheezing</option>
+							  <option value = "2">low wheezing</option>
+                              <option value = "5">medium wheezing</option>
+							  <option value = "7">high wheezing</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Swallowing Difficulty">Swallowing Difficulty</label>
+							<select class="form-control" id="Swallowing Difficulty" name = "Swallowing Difficulty" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">no</option>
+							  <option value = "6">yes</option>
+							</select>
+						  </div>
+                          </div>
+                          <br>
+                          <div class="form-group  row">
+                          <div class="col-sm">
+							<label for="Clubbing of Finger Nails">Clubbing of Finger Nails</label>
+							<select class="form-control" id="Clubbing of Finger Nails" name = "Clubbing of Finger Nails" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">no</option>
+                              <option value = "9">yes</option>
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Frequent Cold">Frequent Cold</label>
+							<select class="form-control" id="Frequent Cold" name = "Frequent Cold" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">no</option>
+							  <option value = "7">yes</option>
+							  
+							</select>
+						  </div>
+                          <br>
+                          <div class="col-sm">
+							<label for="Dry Cough">Dry Cough</label>
+							<select class="form-control" id="Dry Cough" name = "Dry Cough" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">low</option>
+                              <option value = "5">medium</option>
+							  <option value = "7">high</option>
+							  
+							</select>
+						  </div>
+                          <div class="col-sm">
+							<label for="Snoring">Snoring</label>
+							<select class="form-control" id="Snoring" name = "Snoring" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "1">low</option>
+							  <option value = "4">medium</option>
+							  <option value = "7">high</option>
+							  
+							</select>
+						  </div>
+                          </div>
+                         </div>
+						  </div>
+					  <br>
+					  <br>
+					  <br>
+					  <div class="form-group" style="padding: 0% 0% 0% 45%;">
+						<input class="btn btn-primary" type="submit" value="Evaluate Yourself" style="background-color: #c300ff; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; font-weight: bold; animation: pulse 1s infinite;">
+					  </div>
+					  
+				     </div>
+			 </fieldset>
+			</form>
+			
+		</div>
+		
+	</body>
+</html>
