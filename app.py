@@ -1,6 +1,6 @@
 import numpy as np
 import pickle
-from flask import Flask, request, render_template
+from flask import Flask, redirect, request, render_template, url_for
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -11,9 +11,17 @@ model = pickle.load(open('canp_model.pkl', 'rb'))
 
 app = Flask(__name__)
 
- 
+current_page = None
+
+
+
 @app.route('/')
 def home():
+    return render_template('home.html')
+
+
+@app.route('/index')
+def index():
     return render_template('index.html',result="**Your risk will be shown here**")
 
 @app.route('/predict', methods =['POST'])
