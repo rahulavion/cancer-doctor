@@ -13,12 +13,8 @@
 		<title>Can Go</title>
 	</head>
 
-	<body style="background-color: blue;">
-		
-		<!-- Navbar
-		<nav class="navbar" style="background-color: aquamarine;">
-			<span class="navbar-brand mb-0 h1">Cancer Risk Test</span>
-		</nav>-->
+	<body style="background-image: url(static/images/banner-bg.png); background-size: cover;  background-repeat: no-repeat;">
+
 		<!--Prediction Result-->
 		<div id ="result" style="padding: 0% 0% 0% 25%; text-align: center;">
 			<div style="width: 650px; padding: 20px; border: 2px solid #ccc; background-color: #f5f5f5; border-radius: 5px; font-size: 16px; color: #333; font-style: bold; align-items: center;">
@@ -28,13 +24,13 @@
 		<div class="container">
 			<br>
 			<!--Form-->
-			<form action = "{{url_for('predict')}}" method ="POST" style="background-color: aquamarine;">
+			<form action = "{{url_for('predict')}}" method ="POST" style="background-color: rgb(209, 164, 246);;">
 				<fieldset  style="text-align: center;">
 				<legend><b>	Self Cancer Risk Evaluator</b>
 				<p style="font-size: 20px; font-style: italic;">
 					All fields are mandatory
 				</p></legend><br>
-				  <div class="card card-body" style="background-color: aquamarine;">
+				  <div class="card card-body" style="background-color: rgb(209, 164, 246);">
 					  <div class="form-group  row">
 						<div class="col-sm-3">
 							<label for="name">Name</label>
@@ -119,7 +115,7 @@
 							</select>
 						  </div>
                           <div class="col-sm">
-							<label for="chronic Lung Disease">chronic lung Disease</label>
+							<label for="chronic Lung Disease">Chronic lung Disease</label>
 							<select class="form-control" id="chronic Lung Disease" name = "chronic Lung Disease" required>
 							  <option disabled selected value> -- Select an Option -- </option>
 							  <option value = "1">very low</option>
@@ -149,10 +145,10 @@
 							</select>
 						  </div>
                           <div class="col-sm">
-							<label for="Obesity">Obesity (BMI = kg/m2)</label>
+							<label for="Obesity">Obesity (BMI = kg/m<sup>2</sup>)</label>
 							<select class="form-control" id="Obesity" name = "Obesity" required>
 							  <option disabled selected value> -- Select an Option -- </option>
-							  <option value = "1">BMI<24-Low obesity</option>
+							  <option value = "1">BMI < 24-Low obesity </option>
 							  <option value = "4">BMI=24-Moderate obesity</option>
 							  <option value = "7">BMI>=25-High obesity</option>
 							 
@@ -220,7 +216,7 @@
                           <br>
                           <div class="form-group  row">
                           <div class="col-sm">
-							<label for="Weight Loss">Weight Loss *</label>
+							<label for="Weight Loss">Weight Loss</label>
 							<select class="form-control" id="Weight Loss" name = "Weight Loss" required>
 							  <option disabled selected value> -- Select an Option -- </option>
 							  <option value = "1">1</option>
@@ -308,11 +304,12 @@
 					  <br>
 					  <br>
 					  <br>
+					
 					  <div class="form-group" style="padding: 0% 0% 0% 45%;">
-						<input class="btn btn-primary" type="submit" value="Evaluate Yourself" style="background-color: #c300ff; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; font-weight: bold; animation: pulse 1s infinite;">
+						<input class="btn btn-primary" type="submit" value="Evaluate Yourself"  style="background-color: #c300ff; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; font-weight: bold; animation: pulse 1s infinite;">
 					  </div>
-					  
-				     </div>
+					
+					</div>
 			 </fieldset>
 			</form>
 			
