@@ -66,9 +66,23 @@ def send_email(name, phone, message, to_email):
     msg['From'] = from_email
     msg['To'] = to_email
     msg['Subject'] = "Urgent: Risk of Cancer in Patient's Condition"
-    message=f'''Dear Dr. Doctor,\nWe urgently need your expertise regarding a {message} risk of cancer for my patient, {name}. 
-    The patient's contact number is +91{phone}, Your prompt attention to this matter is greatly appreciated.'''
-    msg.attach(MIMEText(message, 'plain'))
+
+    html_message = f'''
+<html>
+  <body style="background-image: url('https://previews.123rf.com/images/ileezhun/ileezhun1508/ileezhun150800156/44189241-cancer-pink-ribbon-horizontal-background.jpg');  background-repeat: no-repeat; background-size: cover; background-attachment: fixed; margin: 0; padding: 0;">
+    <div style="background-color: rgba(255, 255, 255, 0.7);  border-radius: 10px; padding: 20px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+    <p><b>Hello, Dr. Doctor</b></p>
+    <p>We urgently need your expertise regarding a <b>{message}</b> risk of cancer for my patient, {name}. 
+    The patient's contact number is +91{phone}, Your prompt attention to this matter is greatly appreciated.</p>
+    <p>Regards,</p>
+    <p>Cancer Guardian App</p>
+    </div>
+  </body>
+</html>
+'''
+    # message=f'''Dear Dr. Doctor,\nWe urgently need your expertise regarding a {message} risk of cancer for my patient, {name}. 
+    # The patient's contact number is +91{phone}, Your prompt attention to this matter is greatly appreciated.'''
+    msg.attach(MIMEText(html_message, 'html'))
 
     try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
