@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -11,16 +12,58 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 		<title>Can Go</title>
+
+		<style>
+			/* Add your CSS styles here */
+			body {
+			  font-family: Arial, sans-serif;
+			  margin: 0;
+			  padding: 0;
+			}
+			
+			header {
+			  background-color: #c300ff;
+			  color: #fff;
+			  text-align: center;
+			  
+			}
+		
+			.container {
+			  max-width: 960px;
+			  margin: 0 auto;
+			  padding: 20px;
+			}
+		
+			.content {
+			  padding: 20px;
+			}
+		
+			/* Add media queries for responsiveness */
+			@media screen and (max-width: 768px) {
+			  header {
+				font-size: 24px;
+			  }
+			  .container {
+				padding: 10px;
+			  }
+			  .content {
+				padding: 10px;
+			  }
+			}
+		  </style>
 	</head>
 
 	<body style="background-image: url(static/images/banner-bg.png); background-size: cover;  background-repeat: no-repeat;">
-
+		<div class="container">
+			<div class="content">
 		<!--Prediction Result-->
-		<div id ="result" style="padding: 0% 0% 0% 25%; text-align: center;">
-			<div style="width: 650px; padding: 20px; border: 2px solid #ccc; background-color: #f5f5f5; border-radius: 5px; font-size: 16px; color: #333; font-style: bold; align-items: center;">
+		<header>
+		<div id ="result" style="text-align: center;">
+			<div style="border: 2px solid #ccc; background-color: #f5f5f5; border-radius: 5px; font-size: 16px; color: #333; font-style: bold; align-items: center;">
 				{{result}}
 			</div>
 		</div>
+	</header>
 		<div class="container">
 			<br>
 			<!--Form-->
@@ -304,16 +347,15 @@
 					  <br>
 					  <br>
 					  <br>
-					
-					  <div class="form-group" style="padding: 0% 0% 0% 45%;">
-						<input class="btn btn-primary" type="submit" value="Evaluate Yourself"  style="background-color: #c300ff; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; font-weight: bold; animation: pulse 1s infinite;">
+					<header>
+					  <div class="form-group">
+						<input class="btn btn-primary" type="submit" value="Evaluate Yourself"  style="background-color: #c300ff; color: white; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; font-weight: bold; animation: pulse 1s infinite;">
 					  </div>
+					</header>
 					
-					</div>
 			 </fieldset>
 			</form>
-			
 		</div>
-		
+		</div>
 	</body>
 </html>
