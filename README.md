@@ -1,2 +1,4 @@
 # can_go
-# Deployment : https://cancer-risk-predictor.onrender.com
+# Latest v2: https://cancerguardianapp.onrender.com/
+# Deployment v1: https://cancer-risk-predictor.onrender.com
+
